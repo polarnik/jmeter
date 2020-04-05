@@ -1127,10 +1127,13 @@
     {
       "aliasColors": {},
       "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": "jmeterdb",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 18,
@@ -1139,6 +1142,7 @@
         "y": 46
       },
       "height": "",
+      "hiddenSeries": false,
       "id": 29,
       "interval": "$granularity",
       "legend": {
@@ -1158,12 +1162,15 @@
       "links": [],
       "maxPerRow": 1,
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": false,
       "steppedLine": true,
       "targets": [
@@ -1233,6 +1240,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Error Per Second",
       "tooltip": {
@@ -1243,6 +1251,7 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
         "name": null,
         "show": true,
@@ -1264,15 +1273,22 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {},
       "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": "jmeterdb",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 18,
@@ -1281,6 +1297,7 @@
         "y": 64
       },
       "height": "",
+      "hiddenSeries": false,
       "id": 34,
       "interval": "",
       "legend": {
@@ -1301,12 +1318,15 @@
       "links": [],
       "maxPerRow": 1,
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 1,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": false,
       "steppedLine": true,
       "targets": [
@@ -1394,6 +1414,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Error detail",
       "tooltip": {
@@ -1404,6 +1425,7 @@
       },
       "type": "graph",
       "xaxis": {
+        "buckets": null,
         "mode": "time",
         "name": null,
         "show": true,
@@ -1425,7 +1447,11 @@
           "min": null,
           "show": true
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": false,
@@ -1434,6 +1460,32 @@
   "tags": [],
   "templating": {
     "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "default",
+          "value": "default"
+        },
+        "datasource": "jmeterdb",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "retention",
+        "options": [],
+        "query": "SHOW RETENTION POLICIES ON \"jmeterdb\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      },
       {
         "allValue": ".*",
         "datasource": "jmeterdb",
@@ -1510,32 +1562,6 @@
         "type": "interval"
       },
       {
-        "allValue": null,
-        "current": {
-          "tags": [],
-          "text": "default",
-          "value": "default"
-        },
-        "datasource": "jmeterdb",
-        "definition": "",
-        "hide": 0,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
-        "name": "retention",
-        "options": [],
-        "query": "SHOW RETENTION POLICIES ON \"jmeterdb\"",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": null,
-        "tags": [],
-        "tagsQuery": null,
-        "type": "query",
-        "useTags": false
-      },
-      {
         "allValue": ".*",
         "current": {
           "text": "All",
@@ -1596,5 +1622,5 @@
   "timezone": "browser",
   "title": "JMeter Metric Template",
   "uid": "GrafanaJMeterTemplate",
-  "version": 3
+  "version": 4
 }
