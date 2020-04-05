@@ -29,7 +29,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 9,
-  "iteration": 1586106949106,
+  "iteration": 1586106949108,
   "links": [
     {
       "asDropdown": true,
@@ -68,7 +68,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "format": "none",
@@ -138,7 +138,8 @@
               "type": "fill"
             }
           ],
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT last(\"startedT\") FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND $timeFilter GROUP BY time($granularity) fill(null)",
           "refId": "A",
@@ -188,7 +189,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "format": "none",
@@ -253,8 +254,9 @@
             }
           ],
           "measurement": "jmeter",
+          "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT sum(\"hit\")  / 30 FROM \"$retention\".\"jmeter\" WHERE \"application\" = '$app' AND \"transaction\" = 'all' AND $timeFilter GROUP BY time(30s)",
+          "query": "SELECT sum(\"hit\")  / 30 FROM \"$retention\".\"$measurement\" WHERE \"application\" = '$app' AND \"transaction\" = 'all' AND $timeFilter GROUP BY time(30s)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -315,7 +317,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "format": "percentunit",
@@ -373,8 +375,9 @@
           "dsType": "influxdb",
           "groupBy": [],
           "measurement": "jmeter",
+          "orderByTime": "ASC",
           "policy": "$retention",
-          "query": "SELECT sum(\"countError\")  / sum(\"count\") FROM \"$retention\".\"jmeter\" WHERE \"application\" =~ /$app$/ AND \"transaction\" = 'all' AND $timeFilter",
+          "query": "SELECT sum(\"countError\")  / sum(\"count\") FROM \"$retention\".\"$measurement\" WHERE \"application\" =~ /$app$/ AND \"transaction\" = 'all' AND $timeFilter",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -431,7 +434,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -488,7 +491,8 @@
               "type": "fill"
             }
           ],
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT last(\"hit\")  / 5 FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND $timeFilter GROUP BY time($granularity) fill(null)",
           "refId": "A",
@@ -571,7 +575,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "format": "none",
@@ -628,7 +632,8 @@
         {
           "dsType": "influxdb",
           "groupBy": [],
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT \"hit\" FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND \"statut\" = 'all' AND $timeFilter",
           "rawQuery": false,
@@ -677,7 +682,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -734,7 +739,8 @@
               "type": "fill"
             }
           ],
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT mean(\"countError\")  / 5 FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND $timeFilter GROUP BY time($granularity) fill(0)",
           "rawQuery": false,
@@ -829,7 +835,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -892,7 +898,8 @@
             }
           ],
           "hide": false,
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT mean(\"avg\") FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND $timeFilter GROUP BY time($granularity), \"transaction\"",
           "rawQuery": false,
@@ -972,7 +979,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1036,7 +1043,8 @@
               "type": "tag"
             }
           ],
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT mean(\"count\")  / 5 FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND \"transaction\" <> 'all' AND $timeFilter GROUP BY time($granularity), \"transaction\"",
           "rawQuery": false,
@@ -1129,7 +1137,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1197,7 +1205,8 @@
               "type": "fill"
             }
           ],
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT last(\"count\")  / 30 FROM \"$retention\".\"jmeter\" WHERE \"application\" =~ /$app$/ AND \"statut\" = 'ko' AND $timeFilter GROUP BY time(30s), \"transaction\" fill(null)",
           "rawQuery": false,
@@ -1284,7 +1293,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "jmeterdb",
+      "datasource": "$datasource",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1365,7 +1374,8 @@
               "type": "fill"
             }
           ],
-          "measurement": "jmeter",
+          "measurement": "/^$measurement$/",
+          "orderByTime": "ASC",
           "policy": "$retention",
           "query": "SELECT sum(\"count\")  / 5 FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND \"statut\" = 'ko' AND $timeFilter GROUP BY time($granularity), \"responseCode\" fill(null)",
           "rawQuery": false,
@@ -1507,6 +1517,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "jmeter",
           "value": "jmeter"
         },
@@ -1665,5 +1676,5 @@
   "timezone": "browser",
   "title": "JMeter Metric Template",
   "uid": "GrafanaJMeterTemplate",
-  "version": 5
+  "version": 6
 }
