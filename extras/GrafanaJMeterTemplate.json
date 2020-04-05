@@ -1437,14 +1437,14 @@
       {
         "allValue": ".*",
         "datasource": "jmeterdb",
-        "definition": "",
+        "definition": "SHOW TAG VALUES FROM \"jmeter\" WITH KEY = \"application\" where $timeFilter",
         "hide": 0,
         "includeAll": false,
         "label": null,
         "multi": true,
         "name": "app",
         "options": [],
-        "query": "SHOW TAG VALUES FROM \"process\" WITH KEY = \"application\"",
+        "query": "SHOW TAG VALUES FROM \"jmeter\" WITH KEY = \"application\" where $timeFilter",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1596,5 +1596,5 @@
   "timezone": "browser",
   "title": "JMeter Metric Template",
   "uid": "GrafanaJMeterTemplate",
-  "version": 2
+  "version": 3
 }
